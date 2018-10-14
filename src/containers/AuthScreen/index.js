@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react'
-import { KeyboardAvoidingView, LayoutAnimation, Platform, StyleSheet, UIManager } from 'react-native'
-import { Image, View } from 'react-native-animatable'
+import React, { Component, PropTypes } from 'react';
+import { KeyboardAvoidingView, LayoutAnimation, Platform, StyleSheet, Text, UIManager } from 'react-native';
+import { Image, View } from 'react-native-animatable';
+import metrics from '../../config/metrics';
+import imgLogo from '../../images/logo.png';
+import LoginForm from './LoginForm';
+import Opening from './Opening';
+import SignupForm from './SignupForm';
 
-import imgLogo from '../../images/logo.png'
-import metrics from '../../config/metrics'
 
-import Opening from './Opening'
-import SignupForm from './SignupForm'
-import LoginForm from './LoginForm'
 
 const IMAGE_WIDTH = metrics.DEVICE_WIDTH * 0.8
 
@@ -88,6 +88,7 @@ export default class AuthScreen extends Component {
     const formStyle = (!visibleForm) ? { height: 0 } : { marginTop: 40 }
     return (
       <View style={styles.container}>
+        <Text style={{fontSize: 16, color: 'blue', textAlign: 'center', marginTop: 20}}>అన్నదాత సుఖీభవ!</Text>
         <Image
           animation={'bounceIn'}
           duration={1200}
@@ -107,19 +108,19 @@ export default class AuthScreen extends Component {
           behavior={'padding'}
           style={[formStyle, styles.bottom]}
         >
-          {(visibleForm === 'SIGNUP') && (
-            <SignupForm
-              ref={(ref) => this.formRef = ref}
-              onLoginLinkPress={() => this._setVisibleForm('LOGIN')}
-              onSignupPress={signup}
-              isLoading={isLoading}
-            />
-          )}
           {(visibleForm === 'LOGIN') && (
             <LoginForm
               ref={(ref) => this.formRef = ref}
               onSignupLinkPress={() => this._setVisibleForm('SIGNUP')}
               onLoginPress={login}
+              isLoading={isLoading}
+            />
+          )}
+          {(visibleForm === 'SIGNUP') && (
+            <SignupForm
+              ref={(ref) => this.formRef = ref}
+              onLoginLinkPress={() => this._setVisibleForm('LOGIN')}
+              onSignupPress={signup}
               isLoading={isLoading}
             />
           )}
@@ -144,9 +145,8 @@ const styles = StyleSheet.create({
     width: IMAGE_WIDTH,
     alignSelf: 'center',
     resizeMode: 'contain',
-    marginVertical: 30
   },
   bottom: {
-    backgroundColor: '#1976D2'
+    backgroundColor: '#82589F'
   }
 })

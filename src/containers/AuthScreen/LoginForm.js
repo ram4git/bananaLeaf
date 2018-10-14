@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { StyleSheet } from 'react-native'
-import { Text, View } from 'react-native-animatable'
+import React, { Component, PropTypes } from 'react';
+import { StyleSheet } from 'react-native';
+import { Text, View } from 'react-native-animatable';
+import CustomButton from '../../components/CustomButton';
+import CustomTextInput from '../../components/CustomTextInput';
+import metrics from '../../config/metrics';
 
-import CustomButton from '../../components/CustomButton'
-import CustomTextInput from '../../components/CustomTextInput'
-import metrics from '../../config/metrics'
 
 export default class LoginForm extends Component {
   static propTypes = {
